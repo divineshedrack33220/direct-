@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting Soon...</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  #countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #countdown {
+    font-size: 48px;
+    padding: 20px 40px;
+    background-color: darkred;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    animation: heartbeat 1s infinite;
+    outline: none;
+  }
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  #message {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+<div id="countdown-container">
+  <button id="countdown">15</button>
+  <div id="message">Redirecting soon...</div>
+</div>
+
+<script>
+  let countdown = 15;
+
+  // Start the countdown immediately when the page loads
+  startCountdown();
+
+  function startCountdown() {
+    // Update countdown every second
+    let countdownInterval = setInterval(() => {
+      document.getElementById('countdown').innerText = countdown;
+      countdown--;
+
+      // Stop countdown when it reaches zero
+      if (countdown < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').style.visibility = 'hidden';
+        document.getElementById('message').innerText = 'Redirecting...';
+        setTimeout(() => {
+          window.location.href = 'https://dezitravellog.000webhostapp.com'; // Replace with your desired URL
+        }, 1000);
+      }
+    }, 1000);
+  }
+</script>
+</body>
+</html>
